@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="contact-form-section">
+        
+        <form method="POST" action="" id="formId">
+            <h2>Contact Form</h2>
+            <div id="msg"></div>
+            <input type="text" name="name" id="name" placeholder="Enter name" required>
+            <input type="email" name="email" id="email" placeholder="Enter Email" required>
+            <textarea name="message" id="message" placeholder="Enter Message" required></textarea>
+
+            <button id="formSubmit">Submit</button>
+
+        </form>
+
+
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        // used demo/fake csrf
+        let csrfToken = "demo-csrf-token";
+
+        $("#formId").submit(function (e) {
+            e.preventDefault();
+            $.ajax({
+                // here is fake url replace with your real api
+                url: "https://jsonplaceholder.typicode.com/posts",
+                type: "POST",
+                data: $(this).serialize(),
+                headers: {
+                    "X-CSRFToken": csrfToken
+                },
+                success: function (response) {
+                    console.log("✅ Form submitted (demo):", response);
+                    $("#msg").text("Form submitted successfully");
+                },
+                error: function () {
+                    console.log("⚠️ No real API. This is just a demo POST.");
+                    $("#msg").text("No response from API (demo mode).");
+                }
+            });
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>
