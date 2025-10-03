@@ -1,4 +1,4 @@
-# Demo Form Submission (Static HTML + jQuery)
+# Form Submission (Static HTML + jQuery)
 
 This project demonstrates how to submit a form using **AJAX (POST)** with a **demo CSRF token** for security simulation.  
 Since this is a **static HTML project**, no real API or database is connected.  
